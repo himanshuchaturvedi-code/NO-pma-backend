@@ -6,4 +6,3 @@ export async function POST(req) {
   const body = await req.json().catch(() => ({}));
   return NextResponse.json({ ok: true, endpoint: "save", customerId, body });
 }
-
