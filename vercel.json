@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "routes": [
-    { "src": "/api/pma/check", "dest": "/api/pma-check.js" },
-    { "src": "/api/pma/save",  "dest": "/api/pma-save.js" }
-  ]
-}
