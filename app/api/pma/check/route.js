@@ -5,4 +5,3 @@ export async function GET(req) {
   const customerId = searchParams.get("logged_in_customer_id");
   return NextResponse.json({ ok: true, endpoint: "check", customerId });
 }
-
