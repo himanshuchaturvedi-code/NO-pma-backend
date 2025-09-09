@@ -1,10 +1,12 @@
-export default function Page() {
+export default function Home() {
+  const shop = "pma-test-store.myshopify.com"; // hardcode for now
+
+  const authUrl = `https://${shop}/admin/oauth/authorize?client_id=${process.env.SHOPIFY_API_KEY}&scope=read_customers&redirect_uri=${encodeURIComponent("https://no-pma-backend.vercel.app/api/auth/callback")}`;
+
   return (
-    <main style={{ padding: 24, fontFamily: "system-ui, sans-serif" }}>
-      <h1>NO PMA Backend</h1>
-      <p>Check: <code>/api/pma/check</code></p>
-      <p>Save (POST JSON): <code>/api/pma/save</code></p>
-    </main>
+    <div>
+      <h1>N O PMA Backend</h1>
+      <a href={authUrl}>Install App</a>
+    </div>
   );
 }
-
