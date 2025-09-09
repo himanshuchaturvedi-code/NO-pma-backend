@@ -6,6 +6,7 @@ export async function GET(req) {
   const domain = process.env.SHOPIFY_STORE_DOMAIN || "MISSING";
 
   let signed = false;
+  let details = null;
 
   if (customerId) {
     try {
@@ -24,8 +25,11 @@ export async function GET(req) {
         const pmaField = data.metafields.find(
           (mf) => mf.namespace === "pma" && mf.key === "agreement"
         );
-        if (pmaField && pmaField.value === "true") {
-          signed = true;
+
+        if (pmaField) {
+          const parsed = JSON.parse(pmaField.value);
+          signed = parsed.signed === true;
+          details = parsed;
         }
       }
     } catch (err) {
@@ -38,6 +42,7 @@ export async function GET(req) {
     endpoint: "check",
     customerId,
     signed,
+    details,
     domain,
   });
 }
