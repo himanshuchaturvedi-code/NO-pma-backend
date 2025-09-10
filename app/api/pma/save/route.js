@@ -28,11 +28,11 @@ export async function POST(req) {
         },
         body: JSON.stringify({
           metafield: {
-            namespace: "pma",
-            key: "agreement",
-            type: "json",
-            value,
-          },
+                      namespace: "custom",
+                      key: "pma_agreement",
+                      type: "json",
+                      value
+                    }
         }),
       }
     );
