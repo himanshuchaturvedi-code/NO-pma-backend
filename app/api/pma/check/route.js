@@ -23,14 +23,15 @@ export async function GET(req) {
       if (res.ok) {
         const data = await res.json();
         const pmaField = data.metafields.find(
-          (mf) => mf.namespace === "pma" && mf.key === "agreement"
-        );
+        (mf) => mf.namespace === "custom" && mf.key === "pma_agreement"
+          );
 
         if (pmaField) {
           const parsed = JSON.parse(pmaField.value);
           signed = parsed.signed === true;
           details = parsed;
         }
+
       }
     } catch (err) {
       console.error("Error fetching metafields:", err);
